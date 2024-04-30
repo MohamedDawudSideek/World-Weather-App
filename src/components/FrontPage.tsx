@@ -24,7 +24,7 @@ const FrontPage = () => {
         const response = await axios.get(weatherURL);
         if (response.status === 200) {
           setInputCity(cityName);
-          navigate(`/weather-app/city/${cityName}`);
+          navigate(`/city/${cityName}`);
           setWeatherData(response.data);
           console.log(response.data); 
         }
