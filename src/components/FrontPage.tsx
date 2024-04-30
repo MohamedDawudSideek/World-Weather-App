@@ -18,7 +18,7 @@ const FrontPage = () => {
   const fetchData = async()=>{
     if (inputText.trim() !== "") {
       const cityName = inputText.trim();
-      const weatherURL =`http://api.weatherapi.com/v1/current.json?key=eb9740e3a7f24c84a5074204241604&q=${cityName}&aqi=no`;
+      const weatherURL =`https://api.weatherapi.com/v1/current.json?key=eb9740e3a7f24c84a5074204241604&q=${cityName}&aqi=no`;
 
       try {
         const response = await axios.get(weatherURL);
