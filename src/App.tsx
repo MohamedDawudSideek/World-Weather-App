@@ -13,7 +13,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/weather-app" element={<FrontPage />}/>
-        <Route path="/city/:cityName" element={<Weather />}/>
+        <Route path="/weather-app/city/:cityName" element={<Weather />}/>
         <Route path="*" element={<NotFoundPage />}/>
       </Routes>
     </Router>

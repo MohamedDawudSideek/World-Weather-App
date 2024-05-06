@@ -58,13 +58,19 @@
 }
 
 .weather-icon{
-  width: 20%;
+  width: 40%;
 }
 
-.weather-text{
-  font-size: 5vw;
-}
 
+
+@media (max-width: 710px){
+  .current-data{
+    flex-direction: column;
+  }
+  .weather-text{
+    font-size: 5vw;
+  }
+}
 
 @media (max-width: 450px) {
   .form-div {
@@ -80,14 +86,23 @@
   .side-content{
     width: 40%;
   }
-  .current-data{
-    flex-direction: column;
-  }
+  
 }
 
+@media (max-width:350px) and (min-width: 300px){
+  .temp-text{
+    font-size: 0.85rem;
+  }
+}
 
 @media (max-width: 300px){
   .side-content{
     width: 50%;
+  }
+  .weather-text{
+    font-size: 8vw;
+  }
+  .location-data{
+    font-size: 8vw;
   }
 }

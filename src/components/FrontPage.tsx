@@ -24,9 +24,9 @@ const FrontPage = () => {
         const response = await axios.get(weatherURL);
         if (response.status === 200) {
           setInputCity(cityName);
-          navigate(`/city/${cityName}`);
+          navigate(`/weather-app/city/${cityName}`);
           setWeatherData(response.data);
-          console.log(response.data); 
+          console.log(response.data.location.country); 
         }
       } catch (error) {
         setError(true)
@@ -50,7 +50,7 @@ const FrontPage = () => {
       
       <div
         className="d-flex justify-content-center flex-wrap align-items-center form-div"
-        style={{ height: "50vh" }}
+        style={{ height: "40vh" }}
       >
         <input
           type="email"
