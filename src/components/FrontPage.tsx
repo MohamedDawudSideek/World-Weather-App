@@ -1,18 +1,18 @@
 // FrontPage.tsx
 import { ChangeEvent, useState} from "react";
 import { useGlobalContext } from "../contexts/hook";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import Weather from "./Weather";
 
 const FrontPage = () => {
   const [inputText, setInputText] = useState("");
-  const navigate = useNavigate();
-  const {  setInputCity, error, setError, setWeatherData } = useGlobalContext();
+  const [modalOpen, setModalOpen] = useState(false);
+  const {  setInputCity, error, setError, setWeatherData, setCountry} = useGlobalContext();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setError(false)
     setInputText(e.target.value);
+    setCountry("");
   };
 
   const fetchData = async()=>{
@@ -24,9 +24,9 @@ const FrontPage = () => {
         const response = await axios.get(weatherURL);
         if (response.status === 200) {
           setInputCity(cityName);
-          navigate(`/weather-app/city/${cityName}`);
+          setCountry(response.data.location.country);
           setWeatherData(response.data);
-          console.log(response.data.location.country); 
+          setModalOpen(true)
         }
       } catch (error) {
         setError(true)
@@ -40,7 +40,6 @@ const FrontPage = () => {
     fetchData();
   };
 
-  
 
   return (
     <div>
@@ -65,6 +64,7 @@ const FrontPage = () => {
         </button>
       </div>
       {error && <h1 className="text-danger text-center">Enter a valid city</h1>}
+      {modalOpen && <Weather onClose={()=>setModalOpen(false)}/>}
     </div>
   );
 };

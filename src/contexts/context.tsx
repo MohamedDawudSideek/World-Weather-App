@@ -29,7 +29,8 @@ interface AppContextProps {
   image: string
   weatherData: WeatherData | null;
   setWeatherData: Dispatch<SetStateAction<WeatherData | null>>;
-  loading: boolean
+  loading: boolean;
+  setCountry: Dispatch<SetStateAction<string>>;
 }
 
 export const AppContext = React.createContext<AppContextProps | undefined>(
@@ -46,17 +47,18 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [country, setCountry] = useState("");
 
 
-  const fetchData = async (cityName: string) => {
+  const fetchData = async (country: string) => {
     
     const unsplashAPI =
-  `https://api.unsplash.com/photos/random?client_id=lQ1eyc4QyqmI8eIs5Gu3uRsC2ek5APyHSy00RPlyoeU&query=${cityName.trim().replace(/\s+/g, '').toLowerCase()}`;
+  `https://api.unsplash.com/photos/random?client_id=lQ1eyc4QyqmI8eIs5Gu3uRsC2ek5APyHSy00RPlyoeU&query=${country}`;
     
   setLoading(true);
   try {
       const response = await axios.get(unsplashAPI);
-      if(response.status===200){
+      if(response.status===200){        
         setImage(response.data.urls.full);
       }
     } catch (error) {
@@ -65,13 +67,15 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     setLoading(false);
   };
 
+
   useEffect(() => {
     if(inputCity.trim()!==""){
-      fetchData(inputCity.trim());
+      fetchData(country);
     }
-  }, [inputCity]);
+  }, [inputCity, country]);
+
 
   return (
-    <AppContext.Provider value={{ inputCity, weatherData, setWeatherData, setInputCity, error, setError, image, loading }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ inputCity, weatherData, setWeatherData, setInputCity, error, setError, image, loading, setCountry }}>{children}</AppContext.Provider>
   );
 };
