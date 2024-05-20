@@ -43,6 +43,7 @@
   box-sizing: border-box; /* Ensure padding is included in width */
   color: #fff;
   text-align: center;
+  overflow-y: scroll;
 }
 
 .side-content p{
