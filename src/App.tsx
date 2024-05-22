@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css"
 import FrontPage from "./components/FrontPage";
-// import Weather from "./components/Weather";
 import NotFoundPage from "./components/NotFoundPage";
 
 function App() {
@@ -22,6 +21,4 @@ function App() {
 export default App;
 
 
-// slow loading enter a valid city
-// image loading slow
-// page reload not directing
+

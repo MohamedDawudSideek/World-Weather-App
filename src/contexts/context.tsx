@@ -54,7 +54,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     
     const unsplashAPI =
   `https://api.unsplash.com/photos/random?client_id=lQ1eyc4QyqmI8eIs5Gu3uRsC2ek5APyHSy00RPlyoeU&query=${country}`;
-    
+
   setLoading(true);
   try {
       const response = await axios.get(unsplashAPI);
