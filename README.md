@@ -10,4 +10,5 @@ This is a weather app that provides real-time weather of any location
 * HTML
 * CSS
 * Vite (Build Tool)
-* 
+* Unsplash API - for images
+* Weather API - for real-time weather
