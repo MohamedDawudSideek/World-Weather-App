@@ -1,7 +1,7 @@
 # Weather App
 
 ## Overview
-This is a weather app that provides real-time weather of any location
+This is a weather app that provides real-time weather of any location in the world.
 
 ## Technologies Used
 * React
