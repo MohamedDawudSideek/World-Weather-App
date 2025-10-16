@@ -14,4 +14,3 @@ This is a weather app that provides real-time weather of any location in the wor
 * CSS
 * Vite (Build Tool)
 
-Visit this site - https://sanvidurath.github.io/weather-app/
